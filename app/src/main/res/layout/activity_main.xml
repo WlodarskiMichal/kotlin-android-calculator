@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:text="0"
+        android:text=""
         android:textSize="60sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,6 +22,8 @@
         />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_clear"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -34,6 +36,8 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_percent"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -46,6 +50,8 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_square_root"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -58,6 +64,8 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_multiply"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -70,6 +78,8 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_seven"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -81,6 +91,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_clear" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_eight"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -92,6 +104,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_percent" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_nine"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -103,6 +117,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_square_root" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_divide"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -114,6 +130,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_multiply" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_four"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -125,6 +143,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_seven" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_five"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -136,6 +156,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_eight" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_six"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -147,6 +169,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_nine" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_minus"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -158,6 +182,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_divide" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_one"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -169,6 +195,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_four" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_two"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -180,6 +208,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_five" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_three"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -191,6 +221,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_six" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_plus"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -202,6 +234,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_minus" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_zero"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -213,6 +247,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_one" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_dot"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -224,6 +260,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_two" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/number_button"
         android:id="@+id/main_button_turn_to_negative"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -235,6 +273,8 @@
         app:layout_constraintTop_toBottomOf="@id/main_button_three" />
 
     <Button
+        android:layout_margin="2dp"
+        android:background = "@drawable/function_button"
         android:id="@+id/main_button_equals"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
