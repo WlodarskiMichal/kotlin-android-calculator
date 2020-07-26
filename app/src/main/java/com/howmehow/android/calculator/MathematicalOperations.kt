@@ -2,12 +2,10 @@ package com.howmehow.android.calculator
 
 import java.math.BigDecimal
 import java.math.RoundingMode
-import kotlin.math.round
-import kotlin.math.roundToLong
 import kotlin.math.sqrt
 
 
-open class MathLogic {
+open class MathematicalOperations {
 
     fun addition(number1: Double, number2: Double): String {
         var number = (number1 + number2)
@@ -20,10 +18,10 @@ open class MathLogic {
 
     fun subtraction(number1: Double, number2: Double): String {
         var number = (number1 - number2)
-        return if (number.rem(1).equals(0.0)) {
-            number.toInt().toString()
+        if (number.rem(1).equals(0.0)) {
+            return number.toInt().toString()
         } else {
-            number.toString()
+            return number.toString()
         }
     }
 
@@ -37,7 +35,7 @@ open class MathLogic {
     }
 
     fun division(number1: Double, number2: Double): String {
-        return if (number2 != 0.0){
+        return if (number1 != 0.0 && number2 != 0.0){
             var number = (number1 / number2)
             if (number.rem(1).equals(0.0)) {
                 number.toInt().toString()
@@ -46,10 +44,9 @@ open class MathLogic {
                 decimal.toString()
             }
         } else {
-            "Cannot divide by 0"
+            "⧜"
         }
     }
-    //we gonna have to find out how to trim the number
 
     fun squareRoot(number1: Double): String {
         return sqrt(number1).toString()

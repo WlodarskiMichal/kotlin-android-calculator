@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), Contract.View {
             presenter.onButtonPressed(main_button_clear)
         }
         main_button_percent.setOnClickListener {
-            presenter.onButtonPressed(main_button_square_root)
+            presenter.onButtonPressed(main_button_percent)
         }
         main_button_square_root.setOnClickListener {
             presenter.onButtonPressed(main_button_square_root)
