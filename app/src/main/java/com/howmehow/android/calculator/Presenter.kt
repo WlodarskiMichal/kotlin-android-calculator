@@ -1,7 +1,6 @@
 package com.howmehow.android.calculator
 
 import android.widget.Button
-import android.widget.Toast
 
 class Presenter : Contract.Presenter, MathematicalOperations() {
 
@@ -27,10 +26,10 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             "×" -> operationButtonPressed("×")
             "÷" -> operationButtonPressed("÷")
             "%" -> operationPercent()
-            "." -> operationButtonPressed(".")
+            "." -> numberButtonPressed(".")
             "√" -> squareRootButtonPressed()
             "=" -> equalsButtonPressedOnFinal()
-            "+/−" -> addOrRemoveMinusButtonPressed()
+            "+/−" -> numberButtonPressed("-")
             "1" -> numberButtonPressed("1")
             "2" -> numberButtonPressed("2")
             "3" -> numberButtonPressed("3")
@@ -44,17 +43,10 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun addOrRemoveMinusButtonPressed() {
-        TODO("Not yet implemented")
-    }
-
     private fun operationButtonPressed(s: String) {
         if (firstNumber == "") {
             firstNumber = "0"
         }
-//        if (countOperations >= 1){
-//            secondNumber = ""////////////////////////////
-//        }
         if (countOperations >= 1) {
             equalsButtonPressed()
         }
@@ -69,10 +61,20 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun numberButtonPressed(string: String) {
-//        if (countOperations > 1) {
-//            firstNumber = finalNumber
-////            secondNumber = ""////////////////////////////////////
-//        }
+        if (string == "." && firstNumber.contains(".", true)) {
+            return
+        }
+        if (string == "." && currentNumberInput == 2 && secondNumber.contains(".", true)) {
+            return
+        }
+        if (string == "." && currentNumberInput == 1 && firstNumber.contains(".", true)) {
+            return
+        }
+
+        if (string == "-" && firstNumber.contains("-", true)) {
+            firstNumber.replaceFirst("-", "", true)
+        }
+
         if (currentNumberInput == 2) {
             if (secondNumber == "") {
                 secondNumber = string
@@ -89,6 +91,12 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             }
             view.updateTextView(firstNumber)
         }
+        if (string == "-" && currentNumberInput == 2) {
+            secondNumber.startsWith("-", true)
+        }
+        if (string == "-" && currentNumberInput == 1) {
+            firstNumber.startsWith("-", true)
+        }
     }
 
 
@@ -103,28 +111,18 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         countOperations += 1
         view.updateTextView(firstNumber)
         currentNumberInput = 2
-//        firstNumber = finalNumber
-        if (firstNumber == "⧜") {
-            clearViewButtonPressed()
-        }
-    }
-    private fun equalsButtonPressedOnFinal() {
-        finalOperationCounted()
-        countOperations = 0
-        view.updateTextView(firstNumber)
-        currentNumberInput = 2
-//        firstNumber = finalNumber
         if (firstNumber == "⧜") {
             clearViewButtonPressed()
         }
     }
 
-    private fun firstNumberOperationCounted() {
-        when (operation) {
-            "+" -> firstNumber = addition(finalNumber.toDouble(), secondNumber.toDouble())
-            "−" -> firstNumber = subtraction(finalNumber.toDouble(), secondNumber.toDouble())
-            "×" -> firstNumber = multiplication(finalNumber.toDouble(), secondNumber.toDouble())
-            "÷" -> firstNumber = division(finalNumber.toDouble(), secondNumber.toDouble())
+    private fun equalsButtonPressedOnFinal() {
+        finalOperationCounted()
+        countOperations = 0
+        view.updateTextView(firstNumber)
+        currentNumberInput = 2
+        if (firstNumber == "⧜") {
+            clearViewButtonPressed()
         }
     }
 
@@ -152,5 +150,11 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         countOperations = 0
         view.updateTextView("")
     }
+
+    private fun operationPercent() {
+        // TODO here is gonna be something about taking two numbers and making percent work again.
+    }
 }
-//TODO have to make sure that you have to press number first and if there is no first number there is no operation possible
+// TODO I need to round up if there is any zeros going around
+// TODO we gonna have to add another if statement that gonna check if that's the first time equals is being pressed
+// Should I keep working on the percent and +/-?
