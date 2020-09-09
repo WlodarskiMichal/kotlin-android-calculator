@@ -61,10 +61,16 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun numberButtonPressed(string: String) {
-        if (string == "." && currentNumberInput == 2 && secondNumber.contains(".", true)) {
+        if (string == "." && currentNumberInput == 2 && string in secondNumber) {
             return
         }
-        if (string == "." && currentNumberInput == 1 && firstNumber.contains(".", true)) {
+        if (string == "." && currentNumberInput == 1 && string in firstNumber) {
+            return
+        }
+
+        if (string == "-" && string in secondNumber) {
+            secondNumber = secondNumber.drop(1)
+            view.updateTextView(secondNumber)
             return
         }
 
@@ -73,11 +79,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             view.updateTextView(firstNumber)
             return
         }
-        if (string == "-" && string in secondNumber) {
-            secondNumber = secondNumber.drop(1)
-            view.updateTextView(secondNumber)
-            return
-        }
+
         if (string == "-" && currentNumberInput == 2) {
             secondNumber = "$string$secondNumber"
             view.updateTextView(secondNumber)
