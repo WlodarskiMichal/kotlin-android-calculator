@@ -61,9 +61,6 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun numberButtonPressed(string: String) {
-        if (string == "." && firstNumber.contains(".", true)) {
-            return
-        }
         if (string == "." && currentNumberInput == 2 && secondNumber.contains(".", true)) {
             return
         }
@@ -71,8 +68,25 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             return
         }
 
-        if (string == "-" && firstNumber.contains("-", true)) {
-            firstNumber.replaceFirst("-", "", true)
+        if (string == "-" && string in firstNumber) {
+            firstNumber = firstNumber.drop(1)
+            view.updateTextView(firstNumber)
+            return
+        }
+        if (string == "-" && string in secondNumber) {
+            secondNumber = secondNumber.drop(1)
+            view.updateTextView(secondNumber)
+            return
+        }
+        if (string == "-" && currentNumberInput == 2) {
+            secondNumber = "$string$secondNumber"
+            view.updateTextView(secondNumber)
+            return
+        }
+        if (string == "-" && currentNumberInput == 1) {
+            firstNumber = "$string$firstNumber"
+            view.updateTextView(firstNumber)
+            return
         }
 
         if (currentNumberInput == 2) {
@@ -91,14 +105,8 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             }
             view.updateTextView(firstNumber)
         }
-        if (string == "-" && currentNumberInput == 2) {
-            secondNumber.startsWith("-", true)
-        }
-        if (string == "-" && currentNumberInput == 1) {
-            firstNumber.startsWith("-", true)
-        }
-    }
 
+    }
 
     private fun resetNumbers() {
         currentNumberInput = 1
@@ -157,4 +165,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
 }
 // TODO I need to round up if there is any zeros going around
 // TODO we gonna have to add another if statement that gonna check if that's the first time equals is being pressed
-// Should I keep working on the percent and +/-?
+// Should I keep working on the percent
+
+
+//maybe instead of percent I'm gonna make just C that gonna get current value to zero, less fucking around. Or maybe not. Dunno
