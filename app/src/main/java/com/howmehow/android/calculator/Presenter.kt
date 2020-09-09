@@ -167,7 +167,5 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
 }
 // TODO I need to round up if there is any zeros going around
 // TODO we gonna have to add another if statement that gonna check if that's the first time equals is being pressed
-// Should I keep working on the percent
+// TODO Should I keep working on the percent
 
-
-//maybe instead of percent I'm gonna make just C that gonna get current value to zero, less fucking around. Or maybe not. Dunno
