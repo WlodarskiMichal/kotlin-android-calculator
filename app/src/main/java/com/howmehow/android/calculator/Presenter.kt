@@ -110,6 +110,19 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
 
     }
 
+    private fun operationPercent() {
+        if (currentNumberInput == 1){
+            var tempNumber = firstNumber.toDouble()/100
+            firstNumber = tempNumber.toString()
+            view.updateTextView(firstNumber)
+        }
+        if (currentNumberInput == 2){
+            var tempNumber = firstNumber.toDouble()/100 * secondNumber.toDouble()
+            secondNumber = tempNumber.toString()
+            view.updateTextView(secondNumber)
+        }
+    }
+
     private fun resetNumbers() {
         currentNumberInput = 1
         firstNumber = ""
@@ -161,11 +174,9 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         view.updateTextView("")
     }
 
-    private fun operationPercent() {
-        // TODO here is gonna be something about taking two numbers and making percent work again.
-    }
 }
 // TODO I need to round up if there is any zeros going around
 // TODO we gonna have to add another if statement that gonna check if that's the first time equals is being pressed
 // TODO Should I keep working on the percent
 
+//TODO: How it's gonna work, x * % number?
