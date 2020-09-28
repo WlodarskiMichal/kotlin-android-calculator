@@ -115,13 +115,13 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
 
     private fun operationPercent() {
         if (currentNumberInput == 1){
-            var tempNumber = firstNumber.toDouble()/100
+            val tempNumber = firstNumber.toDouble()/100
             firstNumber = tempNumber.toString()
             view.updateTextView(firstNumber)
         }
 
         if (currentNumberInput == 2){
-            var tempNumber = firstNumber.toDouble()/100 * secondNumber.toDouble()
+            val tempNumber = firstNumber.toDouble()/100 * secondNumber.toDouble()
             secondNumber = tempNumber.toString()
             view.updateTextView(secondNumber)
         }
