@@ -4,16 +4,17 @@ import android.widget.Button
 
 private const val infinity = "⧜"
 
+/* numberCurrentlyCaptured is by default First. It recognises which number user
+* is currently saving for later operations. */
+
 class Presenter : Contract.Presenter, MathematicalOperations() {
 
     private var firstNumber: String = ""
     private var secondNumber: String = ""
     private var finalNumber: String = ""
-    /* numberCurrentlyCaptured is by default First. It recognises which number user
-    * is currently saving for later operations. */
-    private var numberCurrentlyCaptured: String = "First"
     private var operation: String = ""
     private var countOperations: Int = 0
+    private var numberCurrentlyCaptured: String = "First"
 
     private lateinit var view: Contract.View
 
@@ -31,7 +32,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             "%" -> operationPercent()
             "." -> numberButtonPressed(".")
             "√" -> squareRootButtonPressed()
-            "=" -> equalsButtonPressedOnFinal()
+            "=" -> equalsButtonPressed()
             "+/−" -> numberButtonPressed("-")
             "1" -> numberButtonPressed("1")
             "2" -> numberButtonPressed("2")
@@ -46,84 +47,94 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun operationButtonPressed(stringFromOperationButton: String) {
+    private fun operationButtonPressed(stringFromPressedOperationButton: String) {
         if (firstNumber == "") {
             firstNumber = "0"
         }
+
         if (countOperations >= 1) {
-            equalsButtonPressed()
+            equalsFunctionCalledFromOperationButton()
         }
-        operationCall(stringFromOperationButton)
+
+        operationCall(stringFromPressedOperationButton)
     }
 
-    private fun operationCall(stringFromOperationButton: String) {
-        operation = stringFromOperationButton
+    private fun operationCall(stringFromPressedOperationButton: String) {
+        operation = stringFromPressedOperationButton
         view.updateTextView(operation)
         numberCurrentlyCaptured = "Second"
         countOperations += 1
     }
 
-    private fun numberButtonPressed(stringFromNumberButton: String) {
-        if (stringFromNumberButton == "." && numberCurrentlyCaptured == "Second" && stringFromNumberButton in secondNumber) {
+    private fun numberButtonPressed(stringFromPressedNumberButton: String) {
+        if (stringFromPressedNumberButton == "." && numberCurrentlyCaptured == "Second" && stringFromPressedNumberButton in secondNumber) {
             return
         }
 
-        if (stringFromNumberButton == "." && numberCurrentlyCaptured == "First" && stringFromNumberButton in firstNumber) {
+        if (stringFromPressedNumberButton == "." && numberCurrentlyCaptured == "First" && stringFromPressedNumberButton in firstNumber) {
             return
         }
 
-        if (stringFromNumberButton == "-" && stringFromNumberButton in secondNumber) {
-            secondNumber = secondNumber.drop(1)
+        if (stringFromPressedNumberButton == "-" && stringFromPressedNumberButton in secondNumber) {
+            currentlyDisplayedNumberNegation(secondNumber)
+            return
+        }
+
+        if (stringFromPressedNumberButton == "-" && stringFromPressedNumberButton in firstNumber) {
+            currentlyDisplayedNumberNegation(firstNumber)
+            return
+        }
+
+        if (stringFromPressedNumberButton == "-" && numberCurrentlyCaptured == "Second") {
+            secondNumber = "$stringFromPressedNumberButton$secondNumber"
             view.updateTextView(secondNumber)
             return
         }
 
-        if (stringFromNumberButton == "-" && stringFromNumberButton in firstNumber) {
-            firstNumber = firstNumber.drop(1)
-            view.updateTextView(firstNumber)
-            return
-        }
-
-        if (stringFromNumberButton == "-" && numberCurrentlyCaptured == "Second") {
-            secondNumber = "$stringFromNumberButton$secondNumber"
-            view.updateTextView(secondNumber)
-            return
-        }
-
-        if (stringFromNumberButton == "-" && numberCurrentlyCaptured == "First") {
-            firstNumber = "$stringFromNumberButton$firstNumber"
+        if (stringFromPressedNumberButton == "-" && numberCurrentlyCaptured == "First") {
+            firstNumber = "$stringFromPressedNumberButton$firstNumber"
             view.updateTextView(firstNumber)
             return
         }
 
         if (numberCurrentlyCaptured == "Second") {
             if (secondNumber == "") {
-                secondNumber = stringFromNumberButton
+                secondNumber = stringFromPressedNumberButton
             } else {
-                secondNumber += stringFromNumberButton
+                secondNumber += stringFromPressedNumberButton
             }
             view.updateTextView(secondNumber)
         }
 
         if (numberCurrentlyCaptured == "First") {
             if (firstNumber == "") {
-                firstNumber = stringFromNumberButton
+                firstNumber = stringFromPressedNumberButton
             } else {
-                firstNumber += stringFromNumberButton
+                firstNumber += stringFromPressedNumberButton
             }
             view.updateTextView(firstNumber)
         }
     }
 
+    private fun currentlyDisplayedNumberNegation(currentNumber: String) {
+        if (currentNumber == secondNumber) {
+            secondNumber = secondNumber.drop(1)
+            view.updateTextView(secondNumber)
+        } else if (currentNumber == firstNumber) {
+            firstNumber = firstNumber.drop(1)
+            view.updateTextView(firstNumber)
+        }
+    }
+
     private fun operationPercent() {
-        if (numberCurrentlyCaptured == "First"){
-            val tempNumber = firstNumber.toDouble()/100
+        if (numberCurrentlyCaptured == "First") {
+            val tempNumber = firstNumber.toDouble() / 100
             firstNumber = tempNumber.toString()
             view.updateTextView(firstNumber)
         }
 
-        if (numberCurrentlyCaptured == "Second"){
-            val tempNumber = firstNumber.toDouble()/100 * secondNumber.toDouble()
+        if (numberCurrentlyCaptured == "Second") {
+            val tempNumber = firstNumber.toDouble() / 100 * secondNumber.toDouble()
             secondNumber = tempNumber.toString()
             view.updateTextView(secondNumber)
         }
@@ -135,27 +146,31 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         secondNumber = ""
     }
 
-    private fun equalsButtonPressed() {
-        if (firstNumber == "" && secondNumber == ""){
+    private fun equalsFunctionCalledFromOperationButton() {
+        if (firstNumber == "" && secondNumber == "") {
             return
         }
+
         finalOperationCounted()
         countOperations += 1
         view.updateTextView(firstNumber)
         numberCurrentlyCaptured = "Second"
+
         if (firstNumber == infinity) {
             clearViewButtonPressed()
         }
     }
 
-    private fun equalsButtonPressedOnFinal() {
-        if (firstNumber == "" && secondNumber == ""){
+    private fun equalsButtonPressed() {
+        if (firstNumber == "" || secondNumber == "") {
             return
         }
+
         finalOperationCounted()
         countOperations = 0
         view.updateTextView(firstNumber)
         numberCurrentlyCaptured = "Second"
+
         if (firstNumber == infinity) {
             clearViewButtonPressed()
         }
