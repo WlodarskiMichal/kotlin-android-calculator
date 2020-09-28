@@ -130,6 +130,9 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun equalsButtonPressed() {
+        if (firstNumber == "" && secondNumber == ""){
+            return
+        }
         finalOperationCounted()
         countOperations += 1
         view.updateTextView(firstNumber)
@@ -140,6 +143,9 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun equalsButtonPressedOnFinal() {
+        if (firstNumber == "" && secondNumber == ""){
+            return
+        }
         finalOperationCounted()
         countOperations = 0
         view.updateTextView(firstNumber)
