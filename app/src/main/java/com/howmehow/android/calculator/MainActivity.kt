@@ -21,64 +21,64 @@ class MainActivity : AppCompatActivity(), Contract.View {
 
     private fun setViews() {
         main_button_clear.setOnClickListener {
-            presenter.onButtonPressed(main_button_clear.text)
+            presenter.clearViewButtonPressed()
         }
         main_button_percent.setOnClickListener {
-            presenter.onButtonPressed(main_button_percent.text)
+            presenter.operationPercentButtonPressed()
         }
         main_button_square_root.setOnClickListener {
-            presenter.onButtonPressed(main_button_square_root.text)
+            presenter.squareRootButtonPressed()
         }
         main_button_multiply.setOnClickListener {
-            presenter.onButtonPressed(main_button_multiply.text)
+            presenter.operationButtonPressed("×")
         }
         main_button_seven.setOnClickListener {
-            presenter.onButtonPressed(main_button_seven.text)
+            presenter.numberButtonPressed("7")
         }
         main_button_eight.setOnClickListener {
-            presenter.onButtonPressed(main_button_eight.text)
+            presenter.numberButtonPressed("8")
         }
         main_button_nine.setOnClickListener {
-            presenter.onButtonPressed(main_button_nine.text)
+            presenter.numberButtonPressed("9")
         }
         main_button_divide.setOnClickListener {
-            presenter.onButtonPressed(main_button_divide.text)
+            presenter.operationButtonPressed("÷")
         }
         main_button_four.setOnClickListener {
-            presenter.onButtonPressed(main_button_four.text)
+            presenter.numberButtonPressed("4")
         }
         main_button_five.setOnClickListener {
-            presenter.onButtonPressed(main_button_five.text)
+            presenter.numberButtonPressed("5")
         }
         main_button_six.setOnClickListener {
-            presenter.onButtonPressed(main_button_six.text)
+            presenter.numberButtonPressed("6")
         }
         main_button_minus.setOnClickListener {
-            presenter.onButtonPressed(main_button_minus.text)
+            presenter.operationButtonPressed("−")
         }
         main_button_one.setOnClickListener {
-            presenter.onButtonPressed(main_button_one.text)
+            presenter.numberButtonPressed("1")
         }
         main_button_two.setOnClickListener {
-            presenter.onButtonPressed(main_button_two.text)
+            presenter.numberButtonPressed("2")
         }
         main_button_three.setOnClickListener {
-            presenter.onButtonPressed(main_button_three.text)
+            presenter.numberButtonPressed("3")
         }
         main_button_plus.setOnClickListener {
-            presenter.onButtonPressed(main_button_plus.text)
+            presenter.operationButtonPressed("+")
         }
         main_button_zero.setOnClickListener {
-            presenter.onButtonPressed(main_button_zero.text)
+            presenter.numberButtonPressed("0")
         }
         main_button_dot.setOnClickListener {
-            presenter.onButtonPressed(main_button_dot.text)
+            presenter.numberButtonPressed(".")
         }
         main_button_turn_to_negative.setOnClickListener {
-            presenter.onButtonPressed(main_button_turn_to_negative.text)
+            presenter.numberButtonPressed("-")
         }
         main_button_equals.setOnClickListener {
-            presenter.onButtonPressed(main_button_equals.text)
+            presenter.equalsButtonPressed()
         }
     }
 

@@ -22,32 +22,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         this.view = view
     }
 
-    override fun onButtonPressed(pressedButton: CharSequence) {
-        when (pressedButton) {
-            "AC" -> clearViewButtonPressed()
-            "+" -> operationButtonPressed("+")
-            "−" -> operationButtonPressed("−")
-            "×" -> operationButtonPressed("×")
-            "÷" -> operationButtonPressed("÷")
-            "%" -> operationPercent()
-            "." -> numberButtonPressed(".")
-            "√" -> squareRootButtonPressed()
-            "=" -> equalsButtonPressed()
-            "+/−" -> numberButtonPressed("-")
-            "1" -> numberButtonPressed("1")
-            "2" -> numberButtonPressed("2")
-            "3" -> numberButtonPressed("3")
-            "4" -> numberButtonPressed("4")
-            "5" -> numberButtonPressed("5")
-            "6" -> numberButtonPressed("6")
-            "7" -> numberButtonPressed("7")
-            "8" -> numberButtonPressed("8")
-            "9" -> numberButtonPressed("9")
-            "0" -> numberButtonPressed("0")
-        }
-    }
-
-    private fun operationButtonPressed(stringFromPressedOperationButton: String) {
+    override fun operationButtonPressed(stringFromPressedOperationButton: String) {
         if (firstNumber.isEmpty()) {
             firstNumber = "0"
         }
@@ -66,7 +41,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         countOperations += 1
     }
 
-    private fun numberButtonPressed(stringFromPressedNumberButton: String) {
+    override fun numberButtonPressed(stringFromPressedNumberButton: String) {
         if (stringFromPressedNumberButton == "." && numberCurrentlyCaptured == "Second" && stringFromPressedNumberButton in secondNumber) {
             return
         }
@@ -127,7 +102,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun operationPercent() {
+    override fun operationPercentButtonPressed() {
         if (numberCurrentlyCaptured == "First") {
             val tempNumber = firstNumber.toDouble() / 100
             firstNumber = tempNumber.toString()
@@ -162,7 +137,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun equalsButtonPressed() {
+    override fun equalsButtonPressed() {
         if (checkIfNumberStringIsEmpty()) {
             return
         }
@@ -188,7 +163,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         firstNumber = finalNumber
     }
 
-    private fun squareRootButtonPressed() {
+    override fun squareRootButtonPressed() {
         finalNumber = squareRoot(firstNumber.toDouble())
         countOperations = 1
         view.updateTextView(finalNumber)
@@ -196,7 +171,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         secondNumber = ""
     }
 
-    private fun clearViewButtonPressed() {
+    override fun clearViewButtonPressed() {
         resetNumbers()
         countOperations = 0
         view.updateTextView("")
