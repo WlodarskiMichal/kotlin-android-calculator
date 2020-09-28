@@ -48,7 +48,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun operationButtonPressed(stringFromPressedOperationButton: String) {
-        if (firstNumber == "") {
+        if (firstNumber.isEmpty()) {
             firstNumber = "0"
         }
 
@@ -98,7 +98,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
 
         if (numberCurrentlyCaptured == "Second") {
-            if (secondNumber == "") {
+            if (secondNumber.isEmpty()) {
                 secondNumber = stringFromPressedNumberButton
             } else {
                 secondNumber += stringFromPressedNumberButton
@@ -107,7 +107,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
 
         if (numberCurrentlyCaptured == "First") {
-            if (firstNumber == "") {
+            if (firstNumber.isEmpty()) {
                 firstNumber = stringFromPressedNumberButton
             } else {
                 firstNumber += stringFromPressedNumberButton
@@ -147,7 +147,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun equalsFunctionCalledFromOperationButton() {
-        if (firstNumber == "" && secondNumber == "") {
+        if (firstNumber.isEmpty() && secondNumber.isEmpty()) {
             return
         }
 
@@ -162,7 +162,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun equalsButtonPressed() {
-        if (firstNumber == "" || secondNumber == "") {
+        if (firstNumber.isEmpty() || secondNumber.isEmpty()) {
             return
         }
 
