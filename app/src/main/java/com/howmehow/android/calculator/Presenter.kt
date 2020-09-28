@@ -9,7 +9,9 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     private var firstNumber: String = ""
     private var secondNumber: String = ""
     private var finalNumber: String = ""
-    private var currentNumberInput: Int = 1
+    /* numberCurrentlyCaptured is by default First. It recognises which number user
+    * is currently saving for later operations. */
+    private var numberCurrentlyCaptured: String = "First"
     private var operation: String = ""
     private var countOperations: Int = 0
 
@@ -57,16 +59,16 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     private fun operationCall(stringFromOperationButton: String) {
         operation = stringFromOperationButton
         view.updateTextView(operation)
-        currentNumberInput = 2
+        numberCurrentlyCaptured = "Second"
         countOperations += 1
     }
 
     private fun numberButtonPressed(stringFromNumberButton: String) {
-        if (stringFromNumberButton == "." && currentNumberInput == 2 && stringFromNumberButton in secondNumber) {
+        if (stringFromNumberButton == "." && numberCurrentlyCaptured == "Second" && stringFromNumberButton in secondNumber) {
             return
         }
 
-        if (stringFromNumberButton == "." && currentNumberInput == 1 && stringFromNumberButton in firstNumber) {
+        if (stringFromNumberButton == "." && numberCurrentlyCaptured == "First" && stringFromNumberButton in firstNumber) {
             return
         }
 
@@ -82,19 +84,19 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             return
         }
 
-        if (stringFromNumberButton == "-" && currentNumberInput == 2) {
+        if (stringFromNumberButton == "-" && numberCurrentlyCaptured == "Second") {
             secondNumber = "$stringFromNumberButton$secondNumber"
             view.updateTextView(secondNumber)
             return
         }
 
-        if (stringFromNumberButton == "-" && currentNumberInput == 1) {
+        if (stringFromNumberButton == "-" && numberCurrentlyCaptured == "First") {
             firstNumber = "$stringFromNumberButton$firstNumber"
             view.updateTextView(firstNumber)
             return
         }
 
-        if (currentNumberInput == 2) {
+        if (numberCurrentlyCaptured == "Second") {
             if (secondNumber == "") {
                 secondNumber = stringFromNumberButton
             } else {
@@ -103,7 +105,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             view.updateTextView(secondNumber)
         }
 
-        if (currentNumberInput == 1) {
+        if (numberCurrentlyCaptured == "First") {
             if (firstNumber == "") {
                 firstNumber = stringFromNumberButton
             } else {
@@ -114,13 +116,13 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun operationPercent() {
-        if (currentNumberInput == 1){
+        if (numberCurrentlyCaptured == "First"){
             val tempNumber = firstNumber.toDouble()/100
             firstNumber = tempNumber.toString()
             view.updateTextView(firstNumber)
         }
 
-        if (currentNumberInput == 2){
+        if (numberCurrentlyCaptured == "Second"){
             val tempNumber = firstNumber.toDouble()/100 * secondNumber.toDouble()
             secondNumber = tempNumber.toString()
             view.updateTextView(secondNumber)
@@ -128,7 +130,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun resetNumbers() {
-        currentNumberInput = 1
+        numberCurrentlyCaptured = "First"
         firstNumber = ""
         secondNumber = ""
     }
@@ -140,7 +142,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         finalOperationCounted()
         countOperations += 1
         view.updateTextView(firstNumber)
-        currentNumberInput = 2
+        numberCurrentlyCaptured = "Second"
         if (firstNumber == infinity) {
             clearViewButtonPressed()
         }
@@ -153,8 +155,8 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         finalOperationCounted()
         countOperations = 0
         view.updateTextView(firstNumber)
-        currentNumberInput = 2
-        if (firstNumber == "⧜") {
+        numberCurrentlyCaptured = "Second"
+        if (firstNumber == infinity) {
             clearViewButtonPressed()
         }
     }
