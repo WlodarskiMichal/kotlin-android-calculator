@@ -119,6 +119,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             firstNumber = tempNumber.toString()
             view.updateTextView(firstNumber)
         }
+
         if (currentNumberInput == 2){
             var tempNumber = firstNumber.toDouble()/100 * secondNumber.toDouble()
             secondNumber = tempNumber.toString()

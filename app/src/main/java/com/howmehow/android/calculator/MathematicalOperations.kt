@@ -9,7 +9,7 @@ private const val infinity = "⧜"
 open class MathematicalOperations {
 
     fun addition(number1: Double, number2: Double): String {
-        var number = (number1 + number2)
+        val number = (number1 + number2)
         return if (number.rem(1).equals(0.0)) {
             number.toInt().toString()
         } else {
@@ -18,7 +18,7 @@ open class MathematicalOperations {
     }
 
     fun subtraction(number1: Double, number2: Double): String {
-        var number = (number1 - number2)
+        val number = (number1 - number2)
         return if (number.rem(1).equals(0.0)) {
             number.toInt().toString()
         } else {
@@ -27,7 +27,7 @@ open class MathematicalOperations {
     }
 
     fun multiplication(number1: Double, number2: Double): String {
-        var number = (number1 * number2)
+        val number = (number1 * number2)
         return if (number.rem(1).equals(0.0)) {
             number.toInt().toString()
         } else {
@@ -37,7 +37,7 @@ open class MathematicalOperations {
 
     fun division(number1: Double, number2: Double): String {
         return if (number1 != 0.0 && number2 != 0.0) {
-            var number = (number1 / number2)
+            val number = (number1 / number2)
             if (number.rem(1).equals(0.0)) {
                 number.toInt().toString()
             } else {
