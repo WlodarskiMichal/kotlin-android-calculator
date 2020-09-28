@@ -43,67 +43,67 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun operationButtonPressed(s: String) {
+    private fun operationButtonPressed(stringFromOperationButton: String) {
         if (firstNumber == "") {
             firstNumber = "0"
         }
         if (countOperations >= 1) {
             equalsButtonPressed()
         }
-        operationCall(s)
+        operationCall(stringFromOperationButton)
     }
 
-    private fun operationCall(s: String) {
-        operation = s
+    private fun operationCall(stringFromOperationButton: String) {
+        operation = stringFromOperationButton
         view.updateTextView(operation)
         currentNumberInput = 2
         countOperations += 1
     }
 
-    private fun numberButtonPressed(string: String) {
-        if (string == "." && currentNumberInput == 2 && string in secondNumber) {
+    private fun numberButtonPressed(stringFromNumberButton: String) {
+        if (stringFromNumberButton == "." && currentNumberInput == 2 && stringFromNumberButton in secondNumber) {
             return
         }
-        if (string == "." && currentNumberInput == 1 && string in firstNumber) {
+        if (stringFromNumberButton == "." && currentNumberInput == 1 && stringFromNumberButton in firstNumber) {
             return
         }
 
-        if (string == "-" && string in secondNumber) {
+        if (stringFromNumberButton == "-" && stringFromNumberButton in secondNumber) {
             secondNumber = secondNumber.drop(1)
             view.updateTextView(secondNumber)
             return
         }
 
-        if (string == "-" && string in firstNumber) {
+        if (stringFromNumberButton == "-" && stringFromNumberButton in firstNumber) {
             firstNumber = firstNumber.drop(1)
             view.updateTextView(firstNumber)
             return
         }
 
-        if (string == "-" && currentNumberInput == 2) {
-            secondNumber = "$string$secondNumber"
+        if (stringFromNumberButton == "-" && currentNumberInput == 2) {
+            secondNumber = "$stringFromNumberButton$secondNumber"
             view.updateTextView(secondNumber)
             return
         }
-        if (string == "-" && currentNumberInput == 1) {
-            firstNumber = "$string$firstNumber"
+        if (stringFromNumberButton == "-" && currentNumberInput == 1) {
+            firstNumber = "$stringFromNumberButton$firstNumber"
             view.updateTextView(firstNumber)
             return
         }
 
         if (currentNumberInput == 2) {
             if (secondNumber == "") {
-                secondNumber = string
+                secondNumber = stringFromNumberButton
             } else {
-                secondNumber += string
+                secondNumber += stringFromNumberButton
             }
             view.updateTextView(secondNumber)
         }
         if (currentNumberInput == 1) {
             if (firstNumber == "") {
-                firstNumber = string
+                firstNumber = stringFromNumberButton
             } else {
-                firstNumber += string
+                firstNumber += stringFromNumberButton
             }
             view.updateTextView(firstNumber)
         }
