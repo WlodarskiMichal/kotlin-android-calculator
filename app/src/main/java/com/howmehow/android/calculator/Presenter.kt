@@ -17,7 +17,6 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         this.view = view
     }
 
-    //have to rename the functions and variables to have it more clear what's going on
     override fun onButtonPressed(pressedButton: Button) {
         when (pressedButton.text) {
             "AC" -> clearViewButtonPressed()
@@ -64,6 +63,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         if (stringFromNumberButton == "." && currentNumberInput == 2 && stringFromNumberButton in secondNumber) {
             return
         }
+
         if (stringFromNumberButton == "." && currentNumberInput == 1 && stringFromNumberButton in firstNumber) {
             return
         }
@@ -85,6 +85,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             view.updateTextView(secondNumber)
             return
         }
+
         if (stringFromNumberButton == "-" && currentNumberInput == 1) {
             firstNumber = "$stringFromNumberButton$firstNumber"
             view.updateTextView(firstNumber)
@@ -99,6 +100,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             }
             view.updateTextView(secondNumber)
         }
+
         if (currentNumberInput == 1) {
             if (firstNumber == "") {
                 firstNumber = stringFromNumberButton
@@ -107,7 +109,6 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
             }
             view.updateTextView(firstNumber)
         }
-
     }
 
     private fun operationPercent() {
@@ -179,10 +180,4 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         countOperations = 0
         view.updateTextView("")
     }
-
 }
-// TODO I need to round up if there is any zeros going around
-// TODO we gonna have to add another if statement that gonna check if that's the first time equals is being pressed
-// TODO Should I keep working on the percent
-
-//TODO: How it's gonna work, x * % number?
