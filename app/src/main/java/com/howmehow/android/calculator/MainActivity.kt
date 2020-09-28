@@ -21,64 +21,64 @@ class MainActivity : AppCompatActivity(), Contract.View {
 
     private fun setViews() {
         main_button_clear.setOnClickListener {
-            presenter.onButtonPressed(main_button_clear)
+            presenter.onButtonPressed(main_button_clear.text)
         }
         main_button_percent.setOnClickListener {
-            presenter.onButtonPressed(main_button_percent)
+            presenter.onButtonPressed(main_button_percent.text)
         }
         main_button_square_root.setOnClickListener {
-            presenter.onButtonPressed(main_button_square_root)
+            presenter.onButtonPressed(main_button_square_root.text)
         }
         main_button_multiply.setOnClickListener {
-            presenter.onButtonPressed(main_button_multiply)
+            presenter.onButtonPressed(main_button_multiply.text)
         }
         main_button_seven.setOnClickListener {
-            presenter.onButtonPressed(main_button_seven)
+            presenter.onButtonPressed(main_button_seven.text)
         }
         main_button_eight.setOnClickListener {
-            presenter.onButtonPressed(main_button_eight)
+            presenter.onButtonPressed(main_button_eight.text)
         }
         main_button_nine.setOnClickListener {
-            presenter.onButtonPressed(main_button_nine)
+            presenter.onButtonPressed(main_button_nine.text)
         }
         main_button_divide.setOnClickListener {
-            presenter.onButtonPressed(main_button_divide)
+            presenter.onButtonPressed(main_button_divide.text)
         }
         main_button_four.setOnClickListener {
-            presenter.onButtonPressed(main_button_four)
+            presenter.onButtonPressed(main_button_four.text)
         }
         main_button_five.setOnClickListener {
-            presenter.onButtonPressed(main_button_five)
+            presenter.onButtonPressed(main_button_five.text)
         }
         main_button_six.setOnClickListener {
-            presenter.onButtonPressed(main_button_six)
+            presenter.onButtonPressed(main_button_six.text)
         }
         main_button_minus.setOnClickListener {
-            presenter.onButtonPressed(main_button_minus)
+            presenter.onButtonPressed(main_button_minus.text)
         }
         main_button_one.setOnClickListener {
-            presenter.onButtonPressed(main_button_one)
+            presenter.onButtonPressed(main_button_one.text)
         }
         main_button_two.setOnClickListener {
-            presenter.onButtonPressed(main_button_two)
+            presenter.onButtonPressed(main_button_two.text)
         }
         main_button_three.setOnClickListener {
-            presenter.onButtonPressed(main_button_three)
+            presenter.onButtonPressed(main_button_three.text)
         }
         main_button_plus.setOnClickListener {
-            presenter.onButtonPressed(main_button_plus)
+            presenter.onButtonPressed(main_button_plus.text)
         }
         main_button_zero.setOnClickListener {
-            presenter.onButtonPressed(main_button_zero)
+            presenter.onButtonPressed(main_button_zero.text)
         }
         main_button_dot.setOnClickListener {
-            presenter.onButtonPressed(main_button_dot)
+            presenter.onButtonPressed(main_button_dot.text)
         }
         main_button_turn_to_negative.setOnClickListener {
-            presenter.onButtonPressed(main_button_turn_to_negative)
+            presenter.onButtonPressed(main_button_turn_to_negative.text)
         }
         main_button_equals.setOnClickListener {
-            presenter.onButtonPressed(main_button_equals)
+            presenter.onButtonPressed(main_button_equals.text)
         }
     }
 

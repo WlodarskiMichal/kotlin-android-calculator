@@ -10,6 +10,6 @@ interface Contract {
 
     interface Presenter{
         fun init(view: View)
-        fun onButtonPressed(pressedButton : Button)
+        fun onButtonPressed(pressedButton : CharSequence)
     }
 }

@@ -22,8 +22,8 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         this.view = view
     }
 
-    override fun onButtonPressed(pressedButton: Button) {
-        when (pressedButton.text) {
+    override fun onButtonPressed(pressedButton: CharSequence) {
+        when (pressedButton) {
             "AC" -> clearViewButtonPressed()
             "+" -> operationButtonPressed("+")
             "−" -> operationButtonPressed("−")
@@ -76,12 +76,14 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
 
         if (stringFromPressedNumberButton == "-" && stringFromPressedNumberButton in secondNumber) {
-            currentlyDisplayedNumberNegation(secondNumber)
+            currentlyDisplayedNumberRemovingNegation(secondNumber)
+            view.updateTextView(secondNumber)
             return
         }
 
         if (stringFromPressedNumberButton == "-" && stringFromPressedNumberButton in firstNumber) {
-            currentlyDisplayedNumberNegation(firstNumber)
+            currentlyDisplayedNumberRemovingNegation(firstNumber)
+            view.updateTextView(firstNumber)
             return
         }
 
@@ -116,13 +118,12 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun currentlyDisplayedNumberNegation(currentNumber: String) {
+    private fun currentlyDisplayedNumberRemovingNegation(currentNumber: String) {
+        if (currentNumber == firstNumber) {
+            firstNumber = firstNumber.drop(1)
+        }
         if (currentNumber == secondNumber) {
             secondNumber = secondNumber.drop(1)
-            view.updateTextView(secondNumber)
-        } else if (currentNumber == firstNumber) {
-            firstNumber = firstNumber.drop(1)
-            view.updateTextView(firstNumber)
         }
     }
 
@@ -147,14 +148,14 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun equalsFunctionCalledFromOperationButton() {
-        if (firstNumber.isEmpty() && secondNumber.isEmpty()) {
+        if (checkIfNumberStringIsEmpty()) {
             return
         }
 
         finalOperationCounted()
         countOperations += 1
         view.updateTextView(firstNumber)
-        numberCurrentlyCaptured = "Second"
+        numberCurrentlyCaptured = "First"
 
         if (firstNumber == infinity) {
             clearViewButtonPressed()
@@ -162,14 +163,14 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     }
 
     private fun equalsButtonPressed() {
-        if (firstNumber.isEmpty() || secondNumber.isEmpty()) {
+        if (checkIfNumberStringIsEmpty()) {
             return
         }
 
         finalOperationCounted()
         countOperations = 0
         view.updateTextView(firstNumber)
-        numberCurrentlyCaptured = "Second"
+        numberCurrentlyCaptured = "First"
 
         if (firstNumber == infinity) {
             clearViewButtonPressed()
@@ -199,5 +200,15 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         resetNumbers()
         countOperations = 0
         view.updateTextView("")
+    }
+
+    private fun checkIfNumberStringIsEmpty(): Boolean {
+        if (firstNumber.isEmpty() || firstNumber == "-") {
+            return true
+        }
+        if (secondNumber.isEmpty() || secondNumber == "-"){
+            return true
+        }
+        return false;
     }
 }

@@ -6,4 +6,5 @@
     <color name="colorBackground">#333333</color>
     <color name="colorOfText">#FFFFFF</color>
     <color name="colorOfNumberButtons">#808080</color>
+    <color name="colorOfFunctionButtons">#FF9800</color>
 </resources>
