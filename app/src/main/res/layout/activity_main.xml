@@ -4,309 +4,208 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/main_textview_display_numbers"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:gravity="end"
-        android:textColor="@color/colorOfText"
-        android:text=""
         android:maxLength="9"
+        android:text=""
+        android:textColor="@color/colorOfText"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_max="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_clear"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
+        style="@style/FunctionButtons"
         android:text="AC"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_seven"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/main_button_percent"
-        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:textColor="@color/colorOfText"
-        android:id="@+id/main_button_percent"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
-        android:text="%"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/main_button_eight"
-        app:layout_constraintStart_toEndOf="@id/main_button_clear"
-        app:layout_constraintEnd_toStartOf="@id/main_button_square_root"
-        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
-
-    <Button
-        android:textColor="@color/colorOfText"
-        android:id="@+id/main_button_square_root"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
-        android:text="√"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/main_button_nine"
-        app:layout_constraintStart_toEndOf="@id/main_button_percent"
-        app:layout_constraintEnd_toStartOf="@id/main_button_multiply"
-        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:textColor="@color/colorOfText"
-        android:id="@+id/main_button_multiply"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
-        android:text="×"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/main_button_divide"
-        app:layout_constraintStart_toEndOf="@id/main_button_square_root"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:textColor="@color/colorOfText"
-        android:id="@+id/main_button_seven"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
-        android:text="7"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/main_button_four"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/main_button_percent"
+        style="@style/FunctionButtons"
+        android:text="%"
+        app:layout_constraintBottom_toTopOf="@id/main_button_eight"
+        app:layout_constraintEnd_toStartOf="@id/main_button_square_root"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/main_button_clear"
+        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/main_button_square_root"
+        style="@style/FunctionButtons"
+        android:text="√"
+        app:layout_constraintBottom_toTopOf="@id/main_button_nine"
+        app:layout_constraintEnd_toStartOf="@id/main_button_multiply"
+        app:layout_constraintStart_toEndOf="@id/main_button_percent"
+        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/main_button_multiply"
+        style="@style/FunctionButtons"
+        android:text="×"
+        app:layout_constraintBottom_toTopOf="@id/main_button_divide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_button_square_root"
+        app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/main_button_seven"
+        style="@style/NumberButtons"
+        android:text="7"
+        app:layout_constraintBottom_toTopOf="@id/main_button_four"
         app:layout_constraintEnd_toStartOf="@id/main_button_eight"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_button_clear" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_eight"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="8"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_five"
-        app:layout_constraintStart_toEndOf="@id/main_button_seven"
         app:layout_constraintEnd_toStartOf="@id/main_button_nine"
+        app:layout_constraintStart_toEndOf="@id/main_button_seven"
         app:layout_constraintTop_toBottomOf="@id/main_button_percent" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_nine"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="9"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_six"
-        app:layout_constraintStart_toEndOf="@id/main_button_eight"
         app:layout_constraintEnd_toStartOf="@id/main_button_divide"
+        app:layout_constraintStart_toEndOf="@id/main_button_eight"
         app:layout_constraintTop_toBottomOf="@id/main_button_square_root" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_divide"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
+        style="@style/FunctionButtons"
         android:text="÷"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_minus"
-        app:layout_constraintStart_toEndOf="@id/main_button_nine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_button_nine"
         app:layout_constraintTop_toBottomOf="@id/main_button_multiply" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_four"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="4"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_one"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/main_button_five"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_button_seven" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_five"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="5"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_two"
-        app:layout_constraintStart_toEndOf="@id/main_button_four"
         app:layout_constraintEnd_toStartOf="@id/main_button_six"
+        app:layout_constraintStart_toEndOf="@id/main_button_four"
         app:layout_constraintTop_toBottomOf="@id/main_button_eight" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_six"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="6"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_three"
-        app:layout_constraintStart_toEndOf="@id/main_button_five"
         app:layout_constraintEnd_toStartOf="@id/main_button_minus"
+        app:layout_constraintStart_toEndOf="@id/main_button_five"
         app:layout_constraintTop_toBottomOf="@id/main_button_nine" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_minus"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
+        style="@style/FunctionButtons"
         android:text="−"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_plus"
-        app:layout_constraintStart_toEndOf="@id/main_button_six"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_button_six"
         app:layout_constraintTop_toBottomOf="@id/main_button_divide" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_one"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="1"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_zero"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/main_button_two"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_button_four" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_two"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="2"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_dot"
-        app:layout_constraintStart_toEndOf="@id/main_button_one"
         app:layout_constraintEnd_toStartOf="@id/main_button_three"
+        app:layout_constraintStart_toEndOf="@id/main_button_one"
         app:layout_constraintTop_toBottomOf="@id/main_button_five" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_three"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="3"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_turn_to_negative"
-        app:layout_constraintStart_toEndOf="@id/main_button_two"
         app:layout_constraintEnd_toStartOf="@id/main_button_plus"
+        app:layout_constraintStart_toEndOf="@id/main_button_two"
         app:layout_constraintTop_toBottomOf="@id/main_button_six" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_plus"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
+        style="@style/FunctionButtons"
         android:text="+"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_equals"
-        app:layout_constraintStart_toEndOf="@id/main_button_three"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_button_three"
         app:layout_constraintTop_toBottomOf="@id/main_button_minus" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_zero"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="0"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/main_button_dot"
-        app:layout_constraintTop_toBottomOf="@id/main_button_one"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_button_one" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_dot"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="."
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_button_zero"
         app:layout_constraintEnd_toStartOf="@id/main_button_turn_to_negative"
+        app:layout_constraintStart_toEndOf="@id/main_button_zero"
         app:layout_constraintTop_toBottomOf="@id/main_button_two" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_turn_to_negative"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/number_button"
+        style="@style/NumberButtons"
         android:text="+/−"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_button_dot"
         app:layout_constraintEnd_toStartOf="@id/main_button_equals"
+        app:layout_constraintStart_toEndOf="@id/main_button_dot"
         app:layout_constraintTop_toBottomOf="@id/main_button_three" />
 
     <Button
-        android:textColor="@color/colorOfText"
         android:id="@+id/main_button_equals"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/function_button"
+        style="@style/FunctionButtons"
         android:text="="
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_button_turn_to_negative"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_button_turn_to_negative"
         app:layout_constraintTop_toBottomOf="@id/main_button_plus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
