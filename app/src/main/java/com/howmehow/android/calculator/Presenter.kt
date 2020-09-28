@@ -2,6 +2,8 @@ package com.howmehow.android.calculator
 
 import android.widget.Button
 
+private const val infinity = "⧜"
+
 class Presenter : Contract.Presenter, MathematicalOperations() {
 
     private var firstNumber: String = ""
@@ -138,7 +140,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         countOperations += 1
         view.updateTextView(firstNumber)
         currentNumberInput = 2
-        if (firstNumber == "⧜") {
+        if (firstNumber == infinity) {
             clearViewButtonPressed()
         }
     }

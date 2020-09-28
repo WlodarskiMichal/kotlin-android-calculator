@@ -4,6 +4,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.sqrt
 
+private const val infinity = "⧜"
 
 open class MathematicalOperations {
 
@@ -44,7 +45,7 @@ open class MathematicalOperations {
                 decimal.toString()
             }
         } else {
-            "⧜"
+            infinity
         }
     }
 
