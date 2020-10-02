@@ -75,7 +75,7 @@ class Presenter : Contract.Presenter {
         if (numberCurrentlyCaptured == "Second") {
             if (secondNumber.isEmpty()) {
                 secondNumber = stringFromPressedNumberButton
-            } else {
+            } else if (secondNumber.count() < 14){
                 secondNumber += stringFromPressedNumberButton
             }
             view.updateTextView(secondNumber)
@@ -84,7 +84,7 @@ class Presenter : Contract.Presenter {
         if (numberCurrentlyCaptured == "First") {
             if (firstNumber.isEmpty()) {
                 firstNumber = stringFromPressedNumberButton
-            } else {
+            } else if (firstNumber.count() < 14) {
                 firstNumber += stringFromPressedNumberButton
             }
             view.updateTextView(firstNumber)

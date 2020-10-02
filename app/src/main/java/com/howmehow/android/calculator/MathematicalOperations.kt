@@ -2,6 +2,7 @@ package com.howmehow.android.calculator
 
 import java.math.BigDecimal
 import java.math.RoundingMode
+import kotlin.math.absoluteValue
 import kotlin.math.sqrt
 
 private const val infinity = "⧜"
@@ -54,7 +55,7 @@ object  MathematicalOperations {
     }
 
     fun squareRoot(number1: Double): String {
-        val number = sqrt(number1)
+        val number = sqrt(number1.absoluteValue)
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
