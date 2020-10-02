@@ -54,7 +54,14 @@ open class MathematicalOperations {
     }
 
     fun squareRoot(number1: Double): String {
-        return sqrt(number1).toString()
+        val number = sqrt(number1)
+        return if (number.rem(1).equals(0.0)) {
+            number.toLong().toString()
+        } else {
+            val decimal = BigDecimal(number).setScale(3, RoundingMode.HALF_UP)
+            decimal.toString()
+        }
+
     }
 }
 

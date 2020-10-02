@@ -1,6 +1,8 @@
 package com.howmehow.android.calculator
 
 import android.widget.Button
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 private const val infinity = "⧜"
 
@@ -105,13 +107,23 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
     override fun operationPercentButtonPressed() {
         if (numberCurrentlyCaptured == "First") {
             val tempNumber = firstNumber.toDouble() / 100
-            firstNumber = tempNumber.toString()
+            firstNumber = if (tempNumber.rem(1).equals(0.0)) {
+                tempNumber.toLong().toString()
+            } else {
+                val decimal = BigDecimal(tempNumber).setScale(3, RoundingMode.HALF_UP)
+                decimal.toString()
+            }
             view.updateTextView(firstNumber)
         }
 
         if (numberCurrentlyCaptured == "Second") {
             val tempNumber = firstNumber.toDouble() / 100 * secondNumber.toDouble()
-            secondNumber = tempNumber.toString()
+            secondNumber = if (tempNumber.rem(1).equals(0.0)) {
+                tempNumber.toLong().toString()
+            } else {
+                val decimal = BigDecimal(tempNumber).setScale(3, RoundingMode.HALF_UP)
+                decimal.toString()
+            }
             view.updateTextView(secondNumber)
         }
     }
@@ -181,7 +193,7 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         if (firstNumber.isEmpty() || firstNumber == "-") {
             return true
         }
-        if (secondNumber.isEmpty() || secondNumber == "-"){
+        if (secondNumber.isEmpty() || secondNumber == "-") {
             return true
         }
         return false;
