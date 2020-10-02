@@ -26,11 +26,8 @@ class PresenterTest {
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
 
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).operationButtonPressed("+")
-
+        presenter.operationButtonPressed("+")
         //then
         verify(view).updateTextView("+")
     }
@@ -42,11 +39,8 @@ class PresenterTest {
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
 
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).operationButtonPressed("-")
-
+        presenter.operationButtonPressed("-")
         //then
         verify(view).updateTextView("-")
     }
@@ -57,11 +51,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).operationButtonPressed("×")
-
+        presenter.operationButtonPressed("×")
         //then
         verify(view).updateTextView("×")
     }
@@ -72,11 +63,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).operationButtonPressed("÷")
-
+        presenter.operationButtonPressed("÷")
         //then
         verify(view).updateTextView("÷")
     }
@@ -87,11 +75,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("1")
-
+        presenter.numberButtonPressed("1")
         //then
         verify(view).updateTextView("1")
     }
@@ -102,11 +87,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("2")
-
+        presenter.numberButtonPressed("2")
         //then
         verify(view).updateTextView("2")
     }
@@ -117,11 +99,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("3")
-
+        presenter.numberButtonPressed("3")
         //then
         verify(view).updateTextView("3")
     }
@@ -132,11 +111,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("4")
-
+        presenter.numberButtonPressed("4")
         //then
         verify(view).updateTextView("4")
     }
@@ -147,11 +123,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("5")
-
+        presenter.numberButtonPressed("5")
         //then
         verify(view).updateTextView("5")
     }
@@ -162,11 +135,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("6")
-
+        presenter.numberButtonPressed("6")
         //then
         verify(view).updateTextView("6")
     }
@@ -177,11 +147,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("7")
-
+        presenter.numberButtonPressed("7")
         //then
         verify(view).updateTextView("7")
     }
@@ -192,11 +159,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("8")
-
+        presenter.numberButtonPressed("8")
         //then
         verify(view).updateTextView("8")
     }
@@ -207,11 +171,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("9")
-
+        presenter.numberButtonPressed("9")
         //then
         verify(view).updateTextView("9")
     }
@@ -222,11 +183,8 @@ class PresenterTest {
         //given - setting the rules/variables
         val presenter: Contract.Presenter = Presenter()
         presenter.init(view)
-
-
         //when - what happens when we do the test
-        (presenter as Presenter).numberButtonPressed("0")
-
+        presenter.numberButtonPressed("0")
         //then
         verify(view).updateTextView("0")
     }

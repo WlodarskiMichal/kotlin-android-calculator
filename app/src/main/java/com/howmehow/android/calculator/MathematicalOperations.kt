@@ -62,6 +62,26 @@ open class MathematicalOperations {
             decimal.toString()
         }
     }
+
+    fun percentOperationOnlyOnFirstNumber(number1: Double): String {
+        val tempNumber = number1 / 100
+        return if (tempNumber.rem(1).equals(0.0)) {
+            tempNumber.toLong().toString()
+        } else {
+            val decimal = BigDecimal(tempNumber).setScale(3, RoundingMode.HALF_UP)
+            decimal.toString()
+        }
+    }
+
+    fun percentOperation(number1: Double, number2: Double) : String {
+        val tempNumber = number1 / 100 * number2
+        return if (tempNumber.rem(1).equals(0.0)) {
+            tempNumber.toLong().toString()
+        } else {
+            val decimal = BigDecimal(tempNumber).setScale(3, RoundingMode.HALF_UP)
+            decimal.toString()
+        };
+    }
 }
 
 

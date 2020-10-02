@@ -1,6 +1,5 @@
 package com.howmehow.android.calculator
 
-import android.widget.Button
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -9,7 +8,7 @@ private const val infinity = "⧜"
 /* numberCurrentlyCaptured is by default First. It recognises which number user
 * is currently saving for later operations. */
 
-class Presenter : Contract.Presenter, MathematicalOperations() {
+class Presenter : Contract.Presenter {
 
     private var firstNumber: String = ""
     private var secondNumber: String = ""
@@ -106,24 +105,12 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
 
     override fun operationPercentButtonPressed() {
         if (numberCurrentlyCaptured == "First") {
-            val tempNumber = firstNumber.toDouble() / 100
-            firstNumber = if (tempNumber.rem(1).equals(0.0)) {
-                tempNumber.toLong().toString()
-            } else {
-                val decimal = BigDecimal(tempNumber).setScale(3, RoundingMode.HALF_UP)
-                decimal.toString()
-            }
+            firstNumber = MathematicalOperations().percentOperationOnlyOnFirstNumber(firstNumber.toDouble())
             view.updateTextView(firstNumber)
         }
 
         if (numberCurrentlyCaptured == "Second") {
-            val tempNumber = firstNumber.toDouble() / 100 * secondNumber.toDouble()
-            secondNumber = if (tempNumber.rem(1).equals(0.0)) {
-                tempNumber.toLong().toString()
-            } else {
-                val decimal = BigDecimal(tempNumber).setScale(3, RoundingMode.HALF_UP)
-                decimal.toString()
-            }
+            secondNumber = MathematicalOperations().percentOperation(firstNumber.toDouble(), secondNumber.toDouble())
             view.updateTextView(secondNumber)
         }
     }
@@ -132,6 +119,43 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         numberCurrentlyCaptured = "First"
         firstNumber = ""
         secondNumber = ""
+    }
+
+    private fun finalOperationCounted() {
+        when (operation) {
+            "+" -> finalNumber =
+                MathematicalOperations().addition(firstNumber.toDouble(), secondNumber.toDouble())
+            "−" -> finalNumber = MathematicalOperations().subtraction(
+                firstNumber.toDouble(),
+                secondNumber.toDouble()
+            )
+            "×" -> finalNumber = MathematicalOperations().multiplication(
+                firstNumber.toDouble(),
+                secondNumber.toDouble()
+            )
+            "÷" -> finalNumber =
+                MathematicalOperations().division(firstNumber.toDouble(), secondNumber.toDouble())
+        }
+        secondNumber = ""
+        firstNumber = finalNumber
+    }
+
+    override fun squareRootButtonPressed() {
+        finalNumber = MathematicalOperations().squareRoot(firstNumber.toDouble())
+        countOperations = 1
+        view.updateTextView(finalNumber)
+        firstNumber = finalNumber
+        secondNumber = ""
+    }
+
+    private fun checkIfNumberStringIsEmpty(): Boolean {
+        if (firstNumber.isEmpty() || firstNumber == "-") {
+            return true
+        }
+        if (secondNumber.isEmpty() || secondNumber == "-") {
+            return true
+        }
+        return false;
     }
 
     private fun equalsFunctionCalledFromOperationButton() {
@@ -164,38 +188,9 @@ class Presenter : Contract.Presenter, MathematicalOperations() {
         }
     }
 
-    private fun finalOperationCounted() {
-        when (operation) {
-            "+" -> finalNumber = addition(firstNumber.toDouble(), secondNumber.toDouble())
-            "−" -> finalNumber = subtraction(firstNumber.toDouble(), secondNumber.toDouble())
-            "×" -> finalNumber = multiplication(firstNumber.toDouble(), secondNumber.toDouble())
-            "÷" -> finalNumber = division(firstNumber.toDouble(), secondNumber.toDouble())
-        }
-        secondNumber = ""
-        firstNumber = finalNumber
-    }
-
-    override fun squareRootButtonPressed() {
-        finalNumber = squareRoot(firstNumber.toDouble())
-        countOperations = 1
-        view.updateTextView(finalNumber)
-        firstNumber = finalNumber
-        secondNumber = ""
-    }
-
     override fun clearViewButtonPressed() {
         resetNumbers()
         countOperations = 0
         view.updateTextView("")
-    }
-
-    private fun checkIfNumberStringIsEmpty(): Boolean {
-        if (firstNumber.isEmpty() || firstNumber == "-") {
-            return true
-        }
-        if (secondNumber.isEmpty() || secondNumber == "-") {
-            return true
-        }
-        return false;
     }
 }
