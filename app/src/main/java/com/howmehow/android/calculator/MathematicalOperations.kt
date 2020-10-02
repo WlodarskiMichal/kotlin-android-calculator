@@ -13,7 +13,7 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.UP)
+            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
             decimal.toString()
         }
     }
@@ -23,7 +23,7 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.UP)
+            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
             decimal.toString()
         }
     }
@@ -34,7 +34,7 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.UP)
+            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
             decimal.toString()
         }
     }
@@ -45,7 +45,7 @@ open class MathematicalOperations {
             if (number.rem(1).equals(0.0)) {
                 number.toLong().toString()
             } else {
-                val decimal = BigDecimal(number).setScale(2, RoundingMode.UP)
+                val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
                 decimal.toString()
             }
         } else {
@@ -58,7 +58,7 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.UP)
+            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
             decimal.toString()
         }
     }
@@ -68,7 +68,7 @@ open class MathematicalOperations {
         return if (tempNumber.rem(1).equals(0.0)) {
             tempNumber.toLong().toString()
         } else {
-            val decimal = BigDecimal(tempNumber).setScale(2, RoundingMode.UP)
+            val decimal = BigDecimal(tempNumber).setScale(2, RoundingMode.HALF_UP)
             decimal.toString()
         }
     }
@@ -78,7 +78,7 @@ open class MathematicalOperations {
         return if (tempNumber.rem(1).equals(0.0)) {
             tempNumber.toLong().toString()
         } else {
-            val decimal = BigDecimal(tempNumber).setScale(2, RoundingMode.UP)
+            val decimal = BigDecimal(tempNumber).setScale(2, RoundingMode.HALF_UP)
             decimal.toString()
         };
     }
