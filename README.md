@@ -8,4 +8,7 @@ Testing was done on Pixel 2, Samsung Galaxy 8, and Pixel 3 XL.
 <img src="https://user-images.githubusercontent.com/58289892/94493061-f8ea9e80-01eb-11eb-83a2-4133dbf9a29e.gif" width="360" height="640" />
 
 <img src="https://user-images.githubusercontent.com/58289892/94493060-f8520800-01eb-11eb-967e-86a418aee159.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94493058-f8520800-01eb-11eb-8f0b-1419c826c46e.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94493056-f8520800-01eb-11eb-9826-bbffb4a4278f.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94493054-f7b97180-01eb-11eb-8831-dc4b443ce1d6.png" width="180" height="320" />
+
+
+
 Generally app was created for educational reasons, and to show my skills. I had help from a Senior Developer to point me issues, and where to tidy the code, but the app is written by me. 
