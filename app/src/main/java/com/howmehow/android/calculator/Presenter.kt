@@ -1,8 +1,5 @@
 package com.howmehow.android.calculator
 
-import java.math.BigDecimal
-import java.math.RoundingMode
-
 private const val infinity = "⧜"
 
 /* numberCurrentlyCaptured is by default First. It recognises which number user
@@ -105,12 +102,16 @@ class Presenter : Contract.Presenter {
 
     override fun operationPercentButtonPressed() {
         if (numberCurrentlyCaptured == "First") {
-            firstNumber = MathematicalOperations().percentOperationOnlyOnFirstNumber(firstNumber.toDouble())
+            firstNumber =
+                MathematicalOperations.percentOperationOnlyOnFirstNumber(firstNumber.toDouble())
             view.updateTextView(firstNumber)
         }
 
         if (numberCurrentlyCaptured == "Second") {
-            secondNumber = MathematicalOperations().percentOperation(firstNumber.toDouble(), secondNumber.toDouble())
+            secondNumber = MathematicalOperations.percentOperation(
+                firstNumber.toDouble(),
+                secondNumber.toDouble()
+            )
             view.updateTextView(secondNumber)
         }
     }
@@ -124,24 +125,24 @@ class Presenter : Contract.Presenter {
     private fun finalOperationCounted() {
         when (operation) {
             "+" -> finalNumber =
-                MathematicalOperations().addition(firstNumber.toDouble(), secondNumber.toDouble())
-            "−" -> finalNumber = MathematicalOperations().subtraction(
+                MathematicalOperations.addition(firstNumber.toDouble(), secondNumber.toDouble())
+            "−" -> finalNumber = MathematicalOperations.subtraction(
                 firstNumber.toDouble(),
                 secondNumber.toDouble()
             )
-            "×" -> finalNumber = MathematicalOperations().multiplication(
+            "×" -> finalNumber = MathematicalOperations.multiplication(
                 firstNumber.toDouble(),
                 secondNumber.toDouble()
             )
             "÷" -> finalNumber =
-                MathematicalOperations().division(firstNumber.toDouble(), secondNumber.toDouble())
+                MathematicalOperations.division(firstNumber.toDouble(), secondNumber.toDouble())
         }
         secondNumber = ""
         firstNumber = finalNumber
     }
 
     override fun squareRootButtonPressed() {
-        finalNumber = MathematicalOperations().squareRoot(firstNumber.toDouble())
+        finalNumber = MathematicalOperations.squareRoot(firstNumber.toDouble())
         countOperations = 1
         view.updateTextView(finalNumber)
         firstNumber = finalNumber

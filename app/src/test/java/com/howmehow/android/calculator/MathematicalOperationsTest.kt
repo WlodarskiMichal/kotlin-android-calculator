@@ -23,27 +23,27 @@ class MathematicalOperationsTest {
     @Test
     fun `test addition operation`(){
         //given
-        val mathOperations = MathematicalOperations()
+        val mathOperations = MathematicalOperations
         //when
         val outcome = mathOperations.addition(1.2,2.0)
         //then
-        assertEquals("3.20", outcome)
+        assertEquals("3.2", outcome)
     }
 
     @Test
     fun `test subtraction operation`(){
         //given
-        val mathOperations = MathematicalOperations()
+        val mathOperations = MathematicalOperations
         //when
         val outcome = mathOperations.subtraction(2.2,2.0)
         //then
-        assertEquals("0.20", outcome)
+        assertEquals("0.2", outcome)
     }
 
     @Test
     fun `test multiplication operation`(){
         //given
-        val mathOperations = MathematicalOperations()
+        val mathOperations = MathematicalOperations
         //when
         val outcome = mathOperations.multiplication(2.0,2.0)
         //then
@@ -53,7 +53,7 @@ class MathematicalOperationsTest {
     @Test
     fun `test division operation`(){
         //given
-        val mathOperations = MathematicalOperations()
+        val mathOperations = MathematicalOperations
         //when
         val outcome = mathOperations.division(2.0,2.0)
         //then
@@ -63,7 +63,7 @@ class MathematicalOperationsTest {
     @Test
     fun `test percent operation on first number`(){
         //given
-        val mathOperations = MathematicalOperations()
+        val mathOperations = MathematicalOperations
         //when
         val outcome = mathOperations.percentOperationOnlyOnFirstNumber(666.0)
         //then
@@ -72,10 +72,10 @@ class MathematicalOperationsTest {
     @Test
     fun `test percent operation on second number `(){
         //given
-        val mathOperations = MathematicalOperations()
+        val mathOperations = MathematicalOperations
         //when
         val outcome = mathOperations.percentOperation(10.0,25.0)
         //then
-        assertEquals("2.50", outcome)
+        assertEquals("2.5", outcome)
     }
 }

@@ -6,15 +6,15 @@ import kotlin.math.sqrt
 
 private const val infinity = "⧜"
 
-open class MathematicalOperations {
+object  MathematicalOperations {
 
     fun addition(number1: Double, number2: Double): String {
         val number = (number1 + number2)
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
-            decimal.toString()
+            val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
+            decimal.toString().trimEnd('0',',')
         }
     }
 
@@ -23,8 +23,8 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
-            decimal.toString()
+            val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
+            decimal.toString().trimEnd('0',',')
         }
     }
 
@@ -34,8 +34,8 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
-            decimal.toString()
+            val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
+            decimal.toString().trimEnd('0',',')
         }
     }
 
@@ -45,8 +45,8 @@ open class MathematicalOperations {
             if (number.rem(1).equals(0.0)) {
                 number.toLong().toString()
             } else {
-                val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
-                decimal.toString()
+                val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
+                decimal.toString().trimEnd('0',',')
             }
         } else {
             infinity
@@ -58,8 +58,8 @@ open class MathematicalOperations {
         return if (number.rem(1).equals(0.0)) {
             number.toLong().toString()
         } else {
-            val decimal = BigDecimal(number).setScale(2, RoundingMode.HALF_UP)
-            decimal.toString()
+            val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
+            decimal.toString().trimEnd('0',',')
         }
     }
 
@@ -68,8 +68,8 @@ open class MathematicalOperations {
         return if (tempNumber.rem(1).equals(0.0)) {
             tempNumber.toLong().toString()
         } else {
-            val decimal = BigDecimal(tempNumber).setScale(2, RoundingMode.HALF_UP)
-            decimal.toString()
+            val decimal = BigDecimal(tempNumber).setScale(9, RoundingMode.HALF_UP)
+            decimal.toString().trimEnd('0',',')
         }
     }
 
@@ -78,8 +78,8 @@ open class MathematicalOperations {
         return if (tempNumber.rem(1).equals(0.0)) {
             tempNumber.toLong().toString()
         } else {
-            val decimal = BigDecimal(tempNumber).setScale(2, RoundingMode.HALF_UP)
-            decimal.toString()
+            val decimal = BigDecimal(tempNumber).setScale(9, RoundingMode.HALF_UP)
+            decimal.toString().trimEnd('0',',')
         };
     }
 }
