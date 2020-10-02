@@ -61,7 +61,6 @@ open class MathematicalOperations {
             val decimal = BigDecimal(number).setScale(3, RoundingMode.HALF_UP)
             decimal.toString()
         }
-
     }
 }
 
