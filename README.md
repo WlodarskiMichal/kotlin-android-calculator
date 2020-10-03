@@ -1,6 +1,7 @@
 # kotlin-android-calculator
 I created a simple Calculator, written in Kotlin, using Model-View-Presenter approach and seperate class for Math Operations. App can be downloaded from Google Play Store here: https://play.google.com/store/apps/details?id=com.howmehow.android.calculator.
 All the functions work correctly. I've used Kotlin Long numbers for retrieving results, it's roughly giving 18-19 digits to work with, but user can only input in single number 14 digits, when there are decimals, I've used BigDecimals that give quite a lot of flexibility, but for this app I limited it to 10 numbers after point, and rounded half_up. Also I managed to cut down trailing zeros in decimals which was quite a challenge.
+The second TextView is behaving like a history collector, so user can see all the numbers and operations until they not gonna press AC.
 Full design is created in Constraint Layout, which is amazingly behaving in the majority of the smartphones and tablets. 
 
 Main activity is focusing only on responding to events that are happening because of the user, the Presenter is having all those responses and making the logic of the app, using MathematicalOperations for operations. In the Contract you can find functions that can be used across the View and Presenter (kind of a bridge in between). 
