@@ -8,8 +8,9 @@ I wrote all the functions myself except sqrt(). With bigger screens like tablets
 
 Generally app was created for educational reasons, and to show my skills. I had help from a Senior Developer to point me issues, and where to tidy the code, but the app was written by me. 
 
-<img src="https://user-images.githubusercontent.com/58289892/94493061-f8ea9e80-01eb-11eb-83a2-4133dbf9a29e.gif" width="360" height="640" />
+<img src="https://user-images.githubusercontent.com/58289892/94999553-556a0700-05ba-11eb-844b-dd8f1200bc7f.gif" width="360" height="640" />
 
-<img src="https://user-images.githubusercontent.com/58289892/94493060-f8520800-01eb-11eb-967e-86a418aee159.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94493058-f8520800-01eb-11eb-8f0b-1419c826c46e.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94493056-f8520800-01eb-11eb-9826-bbffb4a4278f.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94493054-f7b97180-01eb-11eb-8831-dc4b443ce1d6.png" width="180" height="320" />
+<img src="https://user-images.githubusercontent.com/58289892/94999555-5ac75180-05ba-11eb-93ff-e60af1769a36.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94999556-5b5fe800-05ba-11eb-9adf-89af04de5aad.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94999557-5b5fe800-05ba-11eb-9c95-a3afb1bcb73c.png" width="180" height="320" /> <img src="https://user-images.githubusercontent.com/58289892/94999558-5b5fe800-05ba-11eb-8513-88630cbf5640.png" width="180" height="320" />
+
 
 
