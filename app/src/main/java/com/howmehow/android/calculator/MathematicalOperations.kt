@@ -11,43 +11,43 @@ object  MathematicalOperations {
 
     fun addition(number1: Double, number2: Double): String {
         val number = (number1 + number2)
-        return if (number.rem(1).equals(0.0)) {
+        return if (number.rem(1).equals(0.0) || number.rem(1).equals(-0.0)) {
             number.toLong().toString()
         } else {
             val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
-            decimal.toString().trimEnd('0',',')
+            decimal.toString().trimEnd('0','.')
         }
     }
 
     fun subtraction(number1: Double, number2: Double): String {
         val number = (number1 - number2)
-        return if (number.rem(1).equals(0.0)) {
+        return if (number.rem(1).equals(0.0) || number.rem(1).equals(-0.0)) {
             number.toLong().toString()
         } else {
             val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
-            decimal.toString().trimEnd('0',',')
+            decimal.toString().trimEnd('0','.')
         }
     }
 
 
     fun multiplication(number1: Double, number2: Double): String {
         val number = (number1 * number2)
-        return if (number.rem(1).equals(0.0)) {
+        return if (number.rem(1).equals(0.0) || number.rem(1).equals(-0.0)) {
             number.toLong().toString()
         } else {
             val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
-            decimal.toString().trimEnd('0',',')
+            decimal.toString().trimEnd('0','.')
         }
     }
 
     fun division(number1: Double, number2: Double): String {
         val number = (number1 / number2)
         return if (number1 != 0.0 && number2 != 0.0) {
-            if (number.rem(1).equals(0.0)) {
+            if (number.rem(1).equals(0.0) || number.rem(1).equals(-0.0)) {
                 number.toLong().toString()
             } else {
                 val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
-                decimal.toString().trimEnd('0',',')
+                decimal.toString().trimEnd('0','.')
             }
         } else {
             infinity
@@ -60,7 +60,7 @@ object  MathematicalOperations {
             number.toLong().toString()
         } else {
             val decimal = BigDecimal(number).setScale(9, RoundingMode.HALF_UP)
-            decimal.toString().trimEnd('0',',')
+            decimal.toString().trimEnd('0','.')
         }
     }
 
@@ -70,7 +70,7 @@ object  MathematicalOperations {
             tempNumber.toLong().toString()
         } else {
             val decimal = BigDecimal(tempNumber).setScale(9, RoundingMode.HALF_UP)
-            decimal.toString().trimEnd('0',',')
+            decimal.toString().trimEnd('0','.')
         }
     }
 
@@ -80,7 +80,7 @@ object  MathematicalOperations {
             tempNumber.toLong().toString()
         } else {
             val decimal = BigDecimal(tempNumber).setScale(9, RoundingMode.HALF_UP)
-            decimal.toString().trimEnd('0',',')
+            decimal.toString().trimEnd('0','.')
         };
     }
 }

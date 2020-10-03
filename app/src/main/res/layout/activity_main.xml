@@ -10,18 +10,32 @@
     <TextView
         android:id="@+id/main_textview_display_numbers"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:gravity="end"
         android:maxLength="20"
         android:text=""
         android:textColor="@color/colorOfText"
-        android:textSize="60sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_max="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/main_textview_display_everything"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="end|center"
+        android:text=""
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/colorOfText"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/main_button_multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_textview_display_numbers"
+        tools:layout_editor_absoluteX="1dp"/>
 
     <Button
         android:id="@+id/main_button_clear"
@@ -29,11 +43,11 @@
         android:text="@string/ac"
         app:layout_constraintBottom_toTopOf="@id/main_button_seven"
         app:layout_constraintEnd_toStartOf="@id/main_button_percent"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_textview_display_numbers"
         app:layout_constraintVertical_bias="0.9"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintHorizontal_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/main_button_percent"
@@ -76,9 +90,9 @@
         android:text="@string/seven"
         app:layout_constraintBottom_toTopOf="@id/main_button_four"
         app:layout_constraintEnd_toStartOf="@id/main_button_eight"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_button_clear"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@id/main_button_clear" />
 
     <Button
         android:id="@+id/main_button_eight"
@@ -113,9 +127,9 @@
         android:text="@string/four"
         app:layout_constraintBottom_toTopOf="@id/main_button_one"
         app:layout_constraintEnd_toStartOf="@id/main_button_five"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_button_seven"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@id/main_button_seven" />
 
     <Button
         android:id="@+id/main_button_five"
@@ -150,9 +164,9 @@
         android:text="@string/one"
         app:layout_constraintBottom_toTopOf="@id/main_button_zero"
         app:layout_constraintEnd_toStartOf="@id/main_button_two"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_button_four"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@id/main_button_four" />
 
     <Button
         android:id="@+id/main_button_two"
@@ -187,9 +201,9 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/main_button_dot"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_button_one"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@id/main_button_one" />
 
     <Button
         android:id="@+id/main_button_dot"
@@ -217,5 +231,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/main_button_turn_to_negative"
         app:layout_constraintTop_toBottomOf="@id/main_button_plus" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

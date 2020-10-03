@@ -85,4 +85,8 @@ class MainActivity : AppCompatActivity(), Contract.View {
     override fun updateTextView(str: String) {
         main_textview_display_numbers.text = str
     }
+
+    override fun updateSecondTextView(str: String) {
+        main_textview_display_everything.text = str
+    }
 }

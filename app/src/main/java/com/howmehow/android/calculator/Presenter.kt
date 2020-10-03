@@ -13,6 +13,7 @@ class Presenter : Contract.Presenter {
     private var operation: String = ""
     private var countOperations: Int = 0
     private var numberCurrentlyCaptured: String = "First"
+    private var allNumbersAndOperationsCurrentlyUsed: String = ""
 
     private lateinit var view: Contract.View
 
@@ -35,6 +36,13 @@ class Presenter : Contract.Presenter {
     private fun operationCall(stringFromPressedOperationButton: String) {
         operation = stringFromPressedOperationButton
         view.updateTextView(operation)
+        when {
+            allNumbersAndOperationsCurrentlyUsed.endsWith("+", false) -> { dropLastOperationSign()}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("−", false) -> { dropLastOperationSign()}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("÷", false) -> { dropLastOperationSign()}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("×", false) -> { dropLastOperationSign()}}
+        allNumbersAndOperationsCurrentlyUsed += operation
+        view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
         numberCurrentlyCaptured = "Second"
         countOperations += 1
     }
@@ -49,70 +57,83 @@ class Presenter : Contract.Presenter {
         }
 
         if (stringFromPressedNumberButton == "-" && stringFromPressedNumberButton in secondNumber) {
-            currentlyDisplayedNumberRemovingNegation(secondNumber)
-            view.updateTextView(secondNumber)
             return
         }
 
         if (stringFromPressedNumberButton == "-" && stringFromPressedNumberButton in firstNumber) {
-            currentlyDisplayedNumberRemovingNegation(firstNumber)
-            view.updateTextView(firstNumber)
             return
         }
 
         if (stringFromPressedNumberButton == "-" && numberCurrentlyCaptured == "Second") {
+            allNumbersAndOperationsCurrentlyUsed =
+                allNumbersAndOperationsCurrentlyUsed.dropLast(secondNumber.length)
             secondNumber = "$stringFromPressedNumberButton$secondNumber"
             view.updateTextView(secondNumber)
+            allNumbersAndOperationsCurrentlyUsed += " $secondNumber"
+            view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
             return
         }
 
         if (stringFromPressedNumberButton == "-" && numberCurrentlyCaptured == "First") {
+            allNumbersAndOperationsCurrentlyUsed =
+                allNumbersAndOperationsCurrentlyUsed.dropLast(firstNumber.length)
             firstNumber = "$stringFromPressedNumberButton$firstNumber"
             view.updateTextView(firstNumber)
+            allNumbersAndOperationsCurrentlyUsed += " $firstNumber"
+            view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
             return
         }
 
         if (numberCurrentlyCaptured == "Second") {
             if (secondNumber.isEmpty()) {
                 secondNumber = stringFromPressedNumberButton
-            } else if (secondNumber.count() < 14){
+                allNumbersAndOperationsCurrentlyUsed += stringFromPressedNumberButton
+            } else if (secondNumber.count() < 14) {
                 secondNumber += stringFromPressedNumberButton
+                allNumbersAndOperationsCurrentlyUsed += stringFromPressedNumberButton
             }
             view.updateTextView(secondNumber)
+            view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
         }
 
         if (numberCurrentlyCaptured == "First") {
             if (firstNumber.isEmpty()) {
                 firstNumber = stringFromPressedNumberButton
+                allNumbersAndOperationsCurrentlyUsed += stringFromPressedNumberButton
             } else if (firstNumber.count() < 14) {
                 firstNumber += stringFromPressedNumberButton
+                allNumbersAndOperationsCurrentlyUsed += stringFromPressedNumberButton
             }
             view.updateTextView(firstNumber)
-        }
-    }
-
-    private fun currentlyDisplayedNumberRemovingNegation(currentNumber: String) {
-        if (currentNumber == firstNumber) {
-            firstNumber = firstNumber.drop(1)
-        }
-        if (currentNumber == secondNumber) {
-            secondNumber = secondNumber.drop(1)
+            view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
         }
     }
 
     override fun operationPercentButtonPressed() {
-        if (numberCurrentlyCaptured == "First") {
-            firstNumber =
-                MathematicalOperations.percentOperationOnlyOnFirstNumber(firstNumber.toDouble())
-            view.updateTextView(firstNumber)
-        }
+        if (firstNumber == "") {
+            return
+        } else {
+            if (numberCurrentlyCaptured == "First") {
+                firstNumber =
+                    MathematicalOperations.percentOperationOnlyOnFirstNumber(firstNumber.toDouble())
+                view.updateTextView(firstNumber)
+                allNumbersAndOperationsCurrentlyUsed += " /100 = $firstNumber"
+                view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
+            }
 
-        if (numberCurrentlyCaptured == "Second") {
-            secondNumber = MathematicalOperations.percentOperation(
-                firstNumber.toDouble(),
-                secondNumber.toDouble()
-            )
-            view.updateTextView(secondNumber)
+            if (numberCurrentlyCaptured == "Second") {
+                if (secondNumber == "") {
+                    return
+                } else {
+                    secondNumber = MathematicalOperations.percentOperation(
+                        firstNumber.toDouble(),
+                        secondNumber.toDouble()
+                    )
+                    view.updateTextView(secondNumber)
+                    allNumbersAndOperationsCurrentlyUsed += "% "
+                    view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
+                }
+            }
         }
     }
 
@@ -125,7 +146,9 @@ class Presenter : Contract.Presenter {
     private fun finalOperationCounted() {
         when (operation) {
             "+" -> finalNumber =
-                MathematicalOperations.addition(firstNumber.toDouble(), secondNumber.toDouble())
+                MathematicalOperations.addition(
+                    firstNumber.toDouble(),
+                    secondNumber.toDouble())
             "−" -> finalNumber = MathematicalOperations.subtraction(
                 firstNumber.toDouble(),
                 secondNumber.toDouble()
@@ -135,18 +158,26 @@ class Presenter : Contract.Presenter {
                 secondNumber.toDouble()
             )
             "÷" -> finalNumber =
-                MathematicalOperations.division(firstNumber.toDouble(), secondNumber.toDouble())
+                MathematicalOperations.division(
+                    firstNumber.toDouble(),
+                    secondNumber.toDouble())
         }
         secondNumber = ""
         firstNumber = finalNumber
     }
 
     override fun squareRootButtonPressed() {
-        finalNumber = MathematicalOperations.squareRoot(firstNumber.toDouble())
-        countOperations = 1
-        view.updateTextView(finalNumber)
-        firstNumber = finalNumber
-        secondNumber = ""
+        if (firstNumber == "") {
+            return
+        } else {
+            finalNumber = MathematicalOperations.squareRoot(firstNumber.toDouble())
+            countOperations = 1
+            view.updateTextView(finalNumber)
+            allNumbersAndOperationsCurrentlyUsed += "  √$firstNumber = $finalNumber"
+            view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
+            firstNumber = finalNumber
+            secondNumber = ""
+        }
     }
 
     private fun checkIfNumberStringIsEmpty(): Boolean {
@@ -157,6 +188,11 @@ class Presenter : Contract.Presenter {
             return true
         }
         return false;
+    }
+
+    private fun dropLastOperationSign() : String{
+        allNumbersAndOperationsCurrentlyUsed = allNumbersAndOperationsCurrentlyUsed.dropLast(1)
+        return allNumbersAndOperationsCurrentlyUsed
     }
 
     private fun equalsFunctionCalledFromOperationButton() {
@@ -182,6 +218,10 @@ class Presenter : Contract.Presenter {
         finalOperationCounted()
         countOperations = 0
         view.updateTextView(firstNumber)
+        allNumbersAndOperationsCurrentlyUsed += " = "
+        view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
+        allNumbersAndOperationsCurrentlyUsed += firstNumber
+        view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
         numberCurrentlyCaptured = "First"
 
         if (firstNumber == infinity) {
@@ -193,5 +233,7 @@ class Presenter : Contract.Presenter {
         resetNumbers()
         countOperations = 0
         view.updateTextView("")
+        allNumbersAndOperationsCurrentlyUsed = ""
+        view.updateSecondTextView("")
     }
 }

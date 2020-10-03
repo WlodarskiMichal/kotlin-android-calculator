@@ -6,6 +6,7 @@ interface Contract {
 
     interface View{
         fun updateTextView(str : String)
+        fun updateSecondTextView(str : String)
     }
 
     interface Presenter{
