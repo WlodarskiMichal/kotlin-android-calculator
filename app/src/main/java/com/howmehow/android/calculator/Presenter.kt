@@ -130,7 +130,7 @@ class Presenter : Contract.Presenter {
                         secondNumber.toDouble()
                     )
                     view.updateTextView(secondNumber)
-                    allNumbersAndOperationsCurrentlyUsed += "% "
+                    allNumbersAndOperationsCurrentlyUsed += "%"
                     view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
                 }
             }
