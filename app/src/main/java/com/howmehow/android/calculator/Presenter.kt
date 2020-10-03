@@ -37,10 +37,10 @@ class Presenter : Contract.Presenter {
         operation = stringFromPressedOperationButton
         view.updateTextView(operation)
         when {
-            allNumbersAndOperationsCurrentlyUsed.endsWith("+", false) -> { dropLastOperationSign()}
-            allNumbersAndOperationsCurrentlyUsed.endsWith("−", false) -> { dropLastOperationSign()}
-            allNumbersAndOperationsCurrentlyUsed.endsWith("÷", false) -> { dropLastOperationSign()}
-            allNumbersAndOperationsCurrentlyUsed.endsWith("×", false) -> { dropLastOperationSign()}}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("+", false) -> { dropPreviousOperationSign()}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("−", false) -> { dropPreviousOperationSign()}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("÷", false) -> { dropPreviousOperationSign()}
+            allNumbersAndOperationsCurrentlyUsed.endsWith("×", false) -> { dropPreviousOperationSign()}}
         allNumbersAndOperationsCurrentlyUsed += operation
         view.updateSecondTextView(allNumbersAndOperationsCurrentlyUsed)
         numberCurrentlyCaptured = "Second"
@@ -190,7 +190,7 @@ class Presenter : Contract.Presenter {
         return false;
     }
 
-    private fun dropLastOperationSign() : String{
+    private fun dropPreviousOperationSign() : String{
         allNumbersAndOperationsCurrentlyUsed = allNumbersAndOperationsCurrentlyUsed.dropLast(1)
         return allNumbersAndOperationsCurrentlyUsed
     }
