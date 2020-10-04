@@ -2,6 +2,7 @@ package com.howmehow.android.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), Contract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setViews()
+        main_textview_display_everything.movementMethod = ScrollingMovementMethod ()
     }
 
     private fun setViews() {

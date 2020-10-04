@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/main_textview_display_numbers"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         android:gravity="end"
         android:maxLength="20"
         android:text=""
@@ -18,6 +18,8 @@
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="180dp"
+        app:layout_constraintHeight_min="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
@@ -26,16 +28,19 @@
         android:id="@+id/main_textview_display_everything"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
         android:gravity="end|center"
+        android:scrollbars="vertical"
         android:text=""
-        android:layout_marginBottom="15dp"
         android:textColor="@color/colorOfText"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/main_button_multiply"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="110dp"
+        app:layout_constraintHeight_min="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_textview_display_numbers"
-        tools:layout_editor_absoluteX="1dp"/>
+        tools:layout_editor_absoluteX="1dp" />
 
     <Button
         android:id="@+id/main_button_clear"
