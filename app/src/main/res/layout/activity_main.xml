@@ -28,6 +28,7 @@
         android:id="@+id/main_textview_display_everything"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:lineSpacingExtra="2dp"
         android:layout_marginBottom="5dp"
         android:gravity="end|center"
         android:scrollbars="vertical"
